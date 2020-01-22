@@ -1,0 +1,114 @@
+1. i. No, the regex does not match the target exactly. Regex: [129]|18 can be undertsood like 1|2|9|18 so when "1" is encountered in the sample text, it just matches that substring and does not match "18".
+Match: 1
+
+1. ii. No, the regex does not match the target exactly because the word "There" also appears before in the sample text. So the following regex matches the entire text from the point of occurence of the first "There".
+Match : There are 18 trunks and eight suitcasesarranged neatly at the side of the room. Each is painted with the initials Mdm. C.V.D.u.T. Outside, a light snow fall ensues. A tall, blond, forty-year-old concierge stands patiently alone surveying the room. He is tranquil, perfectly composed, waiting. He wears the faintest hint of mascara. He is M. Gustave. M. Gustave crosses swiftly to the door and opens it just as a contingent of hotel staff arrives together from down the corridor. There are two waiters, two footmen, two bellboys, and an Arab teenager, small, cheerful, and alert, who appears to be some kind of page. He is Zero
+
+
+
+2. a. Regex: \b[A-Za-z]{1,3}ell?\b
+Start with a word boundary, have 1-3 letters, have "el", can have one more optional "l" and then end with a word boundary.
+
+2. b. Regex: \b\w*[qQ]u\w[tn]\w*\b
+Start with a word boundary, have 0 or more word characters, have either "q" or "Q", have "u", have any single word character, have either "t" or "n", have 0 or more word characters and then end with a word boundary.
+
+2. c. Regex: \b\w*[iI]n[ie]\w*\b
+Start with a word boundary, have 0 or more word characters, have either "i" or "I", have "n", have either "i" or "e", have 0 or more word characters and then end with a word boundary.
+
+2. d. Regex: \b\d{4,5}\b
+Start with a word boundary, have 4-5 digits and then end with a word boundary.
+
+
+
+3. a. Regex: \<a\w*e\w*i\w*o\w*u\w*\>
+Match:
+<a2e2i2o2u2>
+<adsadeasdsisafdosdfdfu>
+<a988eiou>
+<aeiou326a>
+Mismatch:
+asdasdasfsdg
+aeiou>
+<asdyq3e28912
+a12e12i12o12
+Explanation: Should have "<" character, followed by "a", followed by 0 or more word characters, followed by "e", followed by 0 or more word characters, followed by "i", followed by 0 or more word characters, followed by "o", followed by 0 or more word characters, followed by "u", followed by 0 or more word characters, followed by ">" character.
+
+3. b. Regex: \<\w*\w{2}\w*\w{2}\w*\>
+Match:
+<aaaa>
+<323434343>
+<32askdjh234>
+<dsa231askd>
+Mismatch:
+asdsaffas
+234hasd21
+<asd>
+<awr2344df
+Explanation: Should have "<" character, followed by 0 or more word characters, followed by exactly 2 word characters, followed by 0 or more word characters, followed by exactly 2 word characters, followed by 0 or more word characters, followed by ">" character.
+
+3. c. Regex: ^(\d{3})\d*(\1\d){1,}\$
+Match:
+12391234$
+987656598749874$
+465465446544654$
+913239134$
+Mismatch:
+123456789
+132542133$
+123123$
+asrdasdasd
+Explanation: Begin the string with 3 digits, followed by 0 or more digits, followed by a group (of first three digits and any other additional digit) repeated atleast 1 or more times, followed by a "$" character.
+
+3. d. Regex: \w+\'\w+
+Match:
+da'asddsa
+asd'ds
+345'54
+4'345gd
+Mismatch:
+'dasdas
+sadasd'
+nsalka342
+asd+'hna
+Explanation: Should have atleast one or more word characters, followed by a "'" character, followed by atleast one or more word characters.
+
+3. e. Regex: ^(((\d)\d)\d)\d\1\2\3\$
+Match:
+1234123121$
+9876987989$
+4652465464$
+3541354353$
+Mismatch:
+9874167451$
+845134351531
+asds48754as
+98784522745
+Explanation: Begin the string with 4 digits, followed by the group of first three digits, followed by the group of first two digits, followed by the first digit, followed by a "$" character.
+
+
+
+4. a. Regex: \d+
+
+4. b. Regex: (0\d|1[12])[\._\/]([0-2]\d|3[01])[\._\/]\d{4}
+
+4. c. Regex: \w*\.\w*
+
+4. d. Regex: ((aug|AUG)([AUGCaugc]{3})*(uaa|uag|uga|UAA|UAG|UGA)
+
+4. e. Regex: aug([cg][augc]{2}|u[uc][augc]|u[ag][uc]|ugg|a[cag][augc]|au[uca])*(uaa|uag|uga)         (Assuming the sequence given is in lowercase)
+Regex: (aug|AUG)([cgCG][augcAUGC]{2}|(u|U)[ucUC][augcAUGC]|(u|U)[agAG][ucUC]|(ugg|UGG)|(a|A)[cagCAG][augcAUGC]|(au|AU)[ucaUCA])*(uaa|uag|uga|UAA|UAG|UGA)       (otherwise)
+
+4. f. i. Regex: \S{7,15}
+
+4. f. ii. Regex: \S*[A-Z]\S*
+
+4. f. iii. Regex: \S*[a-z]\S*
+
+4. f. iv. Regex: \S*\d\S*
+
+4. f. v. Regex: ^[^@*]*[ !"#$%'()+,-.\/:<=>?\[\]\\_^`{}|~]+[^@*]*$
+
+
+
+
+

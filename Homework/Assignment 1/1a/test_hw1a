@@ -1,0 +1,6 @@
+a = Gene("DNA1", "AGCTGCATGTACGTAGTCA")
+b = Gene("DNA2", "TCATCGGTAGCAATTT")
+GC_content(a)
+c = a + b
+c.sequence
+-a
